@@ -33,7 +33,6 @@ def parse(arg):
 
 class HBNBCommand(cmd.Cmd):
     """Defines the HolbertonBnB command interpreter.
-
     Attributes:
         prompt (str): The command prompt.
     """
@@ -69,7 +68,8 @@ class HBNBCommand(cmd.Cmd):
             if match is not None:
                 command = [argl[1][:match.span()[0]], match.group()[1:-1]]
                 if command[0] in argdict.keys():
-                                   return argdict[command[0]](call)
+                    call = "{} {}".format(argl[0], command[1])
+                    return argdict[command[0]](call)
         print("*** Unknown syntax: {}".format(arg))
         return False
 
@@ -121,6 +121,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         elif argl[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
+        elif len(argl) == 1:
+            print("** instance id missing **")
         elif "{}.{}".format(argl[0], argl[1]) not in objdict.keys():
             print("** no instance found **")
         else:
@@ -166,7 +168,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return False
         if argl[0] not in HBNBCommand.__classes:
-           return False
+            print("** class doesn't exist **")
+            return False
         if len(argl) == 1:
             print("** instance id missing **")
             return False
@@ -200,6 +203,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     obj.__dict__[k] = v
         storage.save()
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
