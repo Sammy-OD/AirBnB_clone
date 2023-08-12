@@ -37,14 +37,13 @@ class FileStorage:
         from models.review import Review
 
         classes = {"BaseModel": BaseModel,
-                    "User": User,
-                    "State": State,
-                    "City": City,
-                    "Amenity": Amenity,
-                    "Place": Place,
-                    "Review": Review}
+                   "User": User,
+                   "State": State,
+                   "City": City,
+                   "Amenity": Amenity,
+                   "Place": Place,
+                   "Review": Review}
         return classes
-
 
     def reload(self):
         """Deserializes JSON files into __objects."""
@@ -53,7 +52,7 @@ class FileStorage:
         with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
             obj_dict = json.load(f)
             obj_dict = {k: self.classes()[v["__class"]](**v)
-                    for k, v in obj_dict.items()}
+                        for k, v in obj_dict.items()}
             FileStorage._objects = obj_dict
 
     def attributes(self):
@@ -93,4 +92,3 @@ class FileStorage:
                          "text": str}
         }
         return attributes
-
