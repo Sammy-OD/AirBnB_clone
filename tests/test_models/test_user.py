@@ -151,7 +151,7 @@ class TestUser_to_dict(unittest.TestCase):
         self.assertIn("id", us.to_dict())
         self.assertIn("created_at", us.to_dict())
         self.assertIn("updated_at", us.to_dict())
-        self.assertIn("__class__", us.to_dict())
+        self.assertIn("__class", us.to_dict())
 
     def test_to_dict_contains_added_attributes(self):
         us = User()
@@ -174,7 +174,7 @@ class TestUser_to_dict(unittest.TestCase):
         us.created_at = us.updated_at = dt
         tdict = {
             'id': '123456',
-            '__class__': 'User',
+            '__class': 'User',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }

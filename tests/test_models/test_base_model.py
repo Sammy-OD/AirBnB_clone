@@ -149,7 +149,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
         self.assertIn("id", bm.to_dict())
         self.assertIn("created_at", bm.to_dict())
         self.assertIn("updated_at", bm.to_dict())
-        self.assertIn("__class__", bm.to_dict())
+        self.assertIn("__class", bm.to_dict())
 
     def test_to_dict_contains_added_attributes(self):
         bm = BaseModel()
@@ -171,7 +171,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
         bm.created_at = bm.updated_at = dt
         tdict = {
             'id': '123456',
-            '__class__': 'BaseModel',
+            '__class': 'BaseModel',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat()
         }

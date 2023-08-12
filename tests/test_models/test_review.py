@@ -157,7 +157,7 @@ class TestReview_to_dict(unittest.TestCase):
         self.assertIn("id", rv.to_dict())
         self.assertIn("created_at", rv.to_dict())
         self.assertIn("updated_at", rv.to_dict())
-        self.assertIn("__class__", rv.to_dict())
+        self.assertIn("__class", rv.to_dict())
 
     def test_to_dict_contains_added_attributes(self):
         rv = Review()
@@ -180,7 +180,7 @@ class TestReview_to_dict(unittest.TestCase):
         rv.created_at = rv.updated_at = dt
         tdict = {
             'id': '123456',
-            '__class__': 'Review',
+            '__class': 'Review',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }

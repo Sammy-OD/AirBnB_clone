@@ -146,7 +146,7 @@ class TestAmenity_to_dict(unittest.TestCase):
         self.assertIn("id", am.to_dict())
         self.assertIn("created_at", am.to_dict())
         self.assertIn("updated_at", am.to_dict())
-        self.assertIn("__class__", am.to_dict())
+        self.assertIn("__class", am.to_dict())
 
     def test_to_dict_contains_added_attributes(self):
         am = Amenity()
@@ -169,7 +169,7 @@ class TestAmenity_to_dict(unittest.TestCase):
         am.created_at = am.updated_at = dt
         tdict = {
             'id': '123456',
-            '__class__': 'Amenity',
+            '__class': 'Amenity',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }

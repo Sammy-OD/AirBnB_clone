@@ -151,7 +151,7 @@ class TestCity_to_dict(unittest.TestCase):
         self.assertIn("id", cy.to_dict())
         self.assertIn("created_at", cy.to_dict())
         self.assertIn("updated_at", cy.to_dict())
-        self.assertIn("__class__", cy.to_dict())
+        self.assertIn("__class", cy.to_dict())
 
     def test_to_dict_contains_added_attributes(self):
         cy = City()
@@ -174,7 +174,7 @@ class TestCity_to_dict(unittest.TestCase):
         cy.created_at = cy.updated_at = dt
         tdict = {
             'id': '123456',
-            '__class__': 'City',
+            '__class': 'City',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }

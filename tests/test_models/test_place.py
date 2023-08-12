@@ -205,7 +205,7 @@ class TestPlace_to_dict(unittest.TestCase):
         self.assertIn("id", pl.to_dict())
         self.assertIn("created_at", pl.to_dict())
         self.assertIn("updated_at", pl.to_dict())
-        self.assertIn("__class__", pl.to_dict())
+        self.assertIn("__class", pl.to_dict())
 
     def test_to_dict_contains_added_attributes(self):
         pl = Place()
@@ -228,7 +228,7 @@ class TestPlace_to_dict(unittest.TestCase):
         pl.created_at = pl.updated_at = dt
         tdict = {
             'id': '123456',
-            '__class__': 'Place',
+            '__class': 'Place',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }

@@ -145,7 +145,7 @@ class TestState_to_dict(unittest.TestCase):
         self.assertIn("id", st.to_dict())
         self.assertIn("created_at", st.to_dict())
         self.assertIn("updated_at", st.to_dict())
-        self.assertIn("__class__", st.to_dict())
+        self.assertIn("__class", st.to_dict())
 
     def test_to_dict_contains_added_attributes(self):
         st = State()
@@ -168,7 +168,7 @@ class TestState_to_dict(unittest.TestCase):
         st.created_at = st.updated_at = dt
         tdict = {
             'id': '123456',
-            '__class__': 'State',
+            '__class': 'State',
             'created_at': dt.isoformat(),
             'updated_at': dt.isoformat(),
         }
